@@ -1,0 +1,31 @@
+name: Publish
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - v*
+
+permissions:
+  id-token: write
+
+jobs:
+  publish:
+    name: Publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - run: sudo apt install -y woff2
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
+
+      - run: ./scripts/generate-font.sh
+
+      - run: npm ci
+
+      - run: npm publish

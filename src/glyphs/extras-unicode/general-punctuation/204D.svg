@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="emoji" version="1.1" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <linearGradient id="copper" x1="36" x2="36" y1="10" y2="62"
+      gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffd54f" offset="0" />
+      <stop stop-color="#ffc107" offset=".25" />
+      <stop stop-color="#ffc107" offset=".75" />
+      <stop stop-color="#ffab00" offset="1" />
+    </linearGradient>
+  </defs>
+  <path
+    d="m10.395 17.077v37.798l28.76 0.06425c2.8508 0.05849 5.4247-0.28748 8.0704-0.90077 5.5761-1.6053 10.058-5.9803 12.356-11.242 1.0012-2.2753 1.9545-4.717 2.0227-7.2105-1.312-7.7184-6.3878-15.23-14.031-17.773-5.1549-1.2803-10.504-0.49461-15.75-0.73582-7.1426 0.0053-14.285-0.0023-21.428 7.68e-4z"
+    fill="url(#copper)" stroke="#000000" stroke-width="2" stroke-linecap="round"
+    stroke-linejoin="round" />
+</svg>
