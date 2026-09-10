@@ -1,7 +1,7 @@
 {
   "name": "@bullet./emoji",
   "version": "0.0.1",
-  "description": "bullet.moji font (fork of OpenMoji) and utilities to build and work with it",
+  "description": "BulletMoji font (fork of OpenMoji) and utilities to build and work with it",
   "license": "Apache-2.0",
   "author": {
     "name": "Tomas Ravinskas",
@@ -9,7 +9,17 @@
     "url": "https://tomasrav.me/"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "npm run copy:files && npm run generate:regex",
+    "copy:files": "node ./scripts/copy-files.js",
+    "generate:font": "./scripts/generate-font.sh",
+    "generate:regex": "node ./scripts/generate-regex.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
   },
   "files": [
     "dist",
@@ -23,10 +33,5 @@
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/getbullet-app/emoji.git"
-  },
-  "devDependencies": {
-    "expo-font": ">=54",
-    "react-native": ">=0.81",
-    "typescript": "^7.0.2"
   }
 }

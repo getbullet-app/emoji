@@ -1,7 +1,6 @@
 name: Publish
 
 on:
-  workflow_dispatch:
   push:
     tags:
       - v*
@@ -16,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - run: sudo apt install -y woff2
+      - run: sudo apt install -y woff2 xmlstarlet
 
       - uses: actions/setup-node@v7
         with:
@@ -24,8 +23,10 @@ jobs:
           registry-url: https://registry.npmjs.org
           package-manager-cache: false
 
-      - run: ./scripts/generate-font.sh
-
       - run: npm ci
+
+      - run: npm run generate:font
+
+      - run: npm run build
 
       - run: npm publish
