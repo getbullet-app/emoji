@@ -11,13 +11,19 @@
   "scripts": {
     "build": "npm run copy:files && npm run generate:regex",
     "copy:files": "node ./scripts/copy-files.js",
+    "generate:fixtures": "node ./scripts/generate-fixtures.js",
     "generate:font": "./scripts/generate-font.sh",
-    "generate:regex": "node ./scripts/generate-regex.js"
+    "generate:regex": "node ./scripts/generate-regex.js",
+    "test": "brittle-node ./test/index.js && brittle-bare ./test/index.js"
   },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
+    },
+    "./font": {
+      "types": "./dist/font.d.ts",
+      "default": "./dist/font.js"
     },
     "./package.json": "./package.json"
   },
@@ -33,5 +39,9 @@
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/getbullet-app/emoji.git"
+  },
+  "devDependencies": {
+    "@unicode/unicode-17.0.0": "^2.0.5",
+    "brittle": "^4.1.1"
   }
 }

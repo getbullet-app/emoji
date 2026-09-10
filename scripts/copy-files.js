@@ -2,7 +2,7 @@
 const fs = require("node:fs")
 const path = require("node:path")
 
-const files = ["index.js", "index.d.ts", "font.js", "font.android.js"]
+const files = ["index.js", "index.d.ts", "font.js"]
 const srcDir = path.resolve(__dirname, "../src")
 const outDir = path.resolve(__dirname, "../dist")
 
