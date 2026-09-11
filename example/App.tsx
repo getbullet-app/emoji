@@ -3,13 +3,22 @@ import { StatusBar } from "expo-status-bar"
 import { useCallback, useState } from "react"
 import { ActivityIndicator, Button, ScrollView, StyleSheet, Text, View } from "react-native"
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context"
-import { regex } from "@bullet./emoji"
-import { EMOJI_SEQUENCES, EXCLUDE_SEQUENCES, COUNT_SEQUENCES } from "@bullet./emoji/fixtures"
+import { regex, toEmoji, toShortCode } from "@bullet./emoji"
+import {
+  EMOJI_SEQUENCES,
+  EXCLUDE_SEQUENCES,
+  COUNT_SEQUENCES,
+  SHORTCODES,
+} from "@bullet./emoji/fixtures"
 import { BulletMoji_400Regular } from "@bullet./emoji/font"
 import data from "emojibase-data/en/data.json"
 
 const EMOJI_STRING = ["\u204D", ...data.map((e) => e.emoji)].join("")
-const TEST_COUNT = EMOJI_SEQUENCES.length + EXCLUDE_SEQUENCES.length + COUNT_SEQUENCES.length
+const TEST_COUNT =
+  EMOJI_SEQUENCES.length +
+  EXCLUDE_SEQUENCES.length +
+  COUNT_SEQUENCES.length +
+  SHORTCODES.length * 2
 
 function Preview() {
   const [successes, setSuccesses] = useState(0)
@@ -46,6 +55,28 @@ function Preview() {
       } else {
         failures++
         console.warn(`Failed count: "${sequence}" expected ${expected} got ${actual}`)
+      }
+    }
+
+    for (const [emoji, shortCode] of SHORTCODES) {
+      const actual = toShortCode(emoji)
+
+      if (actual === shortCode) {
+        successes++
+      } else {
+        failures++
+        console.warn(`Failed to shortCode: expected "${shortCode}" got "${actual}"`)
+      }
+    }
+
+    for (const [emoji, shortCode] of SHORTCODES) {
+      const actual = toEmoji(shortCode)
+
+      if (actual === emoji) {
+        successes++
+      } else {
+        failures++
+        console.warn(`Failed to emoji: expected "${emoji}" got "${actual}"`)
       }
     }
 

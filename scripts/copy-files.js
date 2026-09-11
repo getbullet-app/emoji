@@ -9,6 +9,7 @@ const files = [
   "font.d.ts",
   "metro.js",
   "metro.d.ts",
+  "raw.d.ts",
   "regex.d.ts",
 ]
 const srcDir = path.resolve(__dirname, "../src")

@@ -125,3 +125,13 @@ module.exports.COUNT_SEQUENCES = [
   ["\u{1F431}\u{1F464}", 2],
   ["🇧🇷🇯🇵🏳️‍🌈🇺🇸", 4],
 ]
+
+module.exports.SHORTCODES = [
+  ["\u204D", "bullet."],
+  ["😐", "neutral"],
+  ["👍", "+1"],
+  ["👎", "-1"],
+  ["🏴󠁧󠁢󠁷󠁬󠁳󠁿", "flag_gbwls"],
+  ["❤️", "heart"],
+  ["not-an-emoji", "not-an-emoji"],
+]

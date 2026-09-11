@@ -9,11 +9,12 @@
     "url": "https://tomasrav.me/"
   },
   "scripts": {
-    "build": "npm run copy:files && npm run generate:regex",
+    "build": "npm run copy:files && npm run generate:index && npm run generate:regex",
     "copy:files": "node ./scripts/copy-files.js",
     "example": "npm run --workspace=bulletmoji-example",
     "generate:fixtures": "node ./scripts/generate-fixtures.js",
     "generate:font": "./scripts/generate-font.sh",
+    "generate:index": "node ./scripts/generate-index.js",
     "generate:regex": "node ./scripts/generate-regex.js",
     "test": "brittle-node ./test/index.js && brittle-bare ./test/index.js"
   },
@@ -55,8 +56,13 @@
     "type": "git",
     "url": "git+ssh://git@github.com/getbullet-app/emoji.git"
   },
+  "dependencies": {
+    "b4a": "^1.8.1",
+    "convert-endianness": "^1.0.0"
+  },
   "devDependencies": {
     "@unicode/unicode-17.0.0": "^2.0.5",
-    "brittle": "^4.1.1"
+    "brittle": "^4.1.1",
+    "emojibase-data": "^17.0.0"
   }
 }

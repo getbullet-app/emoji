@@ -1,1 +1,2 @@
 require("./regex")
+require("./shortcodes")
