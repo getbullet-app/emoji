@@ -4,7 +4,7 @@ pushd "$(dirname "$(dirname "${BASH_SOURCE[0]}")")"
 python3 -m venv .venv
 source .venv/bin/activate
 
-version="$(cat VERSION)"
+version="17.0.0"
 build_dir="$PWD/build/font"
 data_dir="$PWD/data"
 out_dir="$PWD/font"
@@ -24,7 +24,6 @@ jq -r '.[] | [.hexcode, .group] | @tsv' "$build_dir/openmoji.json" | while IFS=$
 done
 
 cat >"$build_dir/BulletMoji.toml" <<-EOF
-family = "BulletMoji"
 output_file = "$build_dir/BulletMoji.ttf"
 color_format = "glyf_colr_1"
 ascender = 1045
