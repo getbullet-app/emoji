@@ -1,4 +1,4 @@
-module.exports.withWOFF2 = function (config) {
+exports.withWOFF2 = function (config) {
   return {
     ...config,
     resolver: {

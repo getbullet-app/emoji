@@ -10,7 +10,7 @@ const bulletmoji = require("../data/bulletmoji.json")
 const r = String.raw
 const base = r`(?:\p{Emoji}|${bulletmoji})(?:\p{EMod}|[\u{E0020}-\u{E007E}]+\u{E007F}|\uFE0F?\u20E3?)`
 
-module.exports = new RegExp(
+exports.regex = new RegExp(
   r`\p{RI}{2}|(?![#*\d](?!\uFE0F?\u20E3))${base}(?:\u200D${base})*`,
   "gu",
 )

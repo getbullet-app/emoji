@@ -1,9 +1,9 @@
 const b4a = require("b4a")
 const { KEYS, POINTS, KEY_TO_POINTS, POINTS_TO_KEY } = require("./raw.js")
 
-module.exports.regex = require("./regex")
+const regex = (exports.regex = require("./regex").regex)
 
-module.exports.toEmoji = function toEmoji(shortCode) {
+const toEmoji = (exports.toEmoji = function toEmoji(shortCode) {
   const shortCodeBuffer = b4a.from(shortCode)
 
   let start = 0
@@ -38,10 +38,10 @@ module.exports.toEmoji = function toEmoji(shortCode) {
   }
 
   return shortCode
-}
+})
 
-module.exports.toShortCode = function toShortCode(emoji) {
-  const codes = module.exports.toCodePoints(emoji)
+const toShortCode = (exports.toShortCode = function toShortCode(emoji) {
+  const codes = toCodePoints(emoji)
 
   let start = 0
   let end = POINTS_TO_KEY.length
@@ -76,9 +76,9 @@ module.exports.toShortCode = function toShortCode(emoji) {
   }
 
   return emoji
-}
+})
 
-module.exports.toCodePoints = function (emoji) {
+const toCodePoints = (exports.toCodePoints = function toCodePoints(emoji) {
   const chars = [...emoji]
   const codes = new Array(chars.length)
 
@@ -87,7 +87,7 @@ module.exports.toCodePoints = function (emoji) {
   }
 
   return codes
-}
+})
 
 function getCodePoint(offset, length) {
   const codes = new Array(length)

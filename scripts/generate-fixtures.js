@@ -16,7 +16,7 @@ if (version !== ${JSON.stringify(unicodePkg.version)}) {
   console.warn("\\nunicode-17.0.0 fixtures outdated\\n")
 }
 
-module.exports = ${JSON.stringify([...EMOJI_MODIFIER_BASE, ...EMOJI_TEST_SEQUENCES, ...RGI_EMOJI_SEQUENCES])}
+exports.UNICODE_SEQUENCES = ${JSON.stringify([...EMOJI_MODIFIER_BASE, ...EMOJI_TEST_SEQUENCES, ...RGI_EMOJI_SEQUENCES])}
 `
 
 fs.mkdirSync(outDir, { recursive: true })
