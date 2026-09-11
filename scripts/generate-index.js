@@ -20,7 +20,7 @@ const points = []
 const codes = []
 const reverse = []
 
-for (const emoji of data) {
+for (const emoji of data.flatMap((emoji) => [emoji, ...(emoji.skins ?? [])])) {
   if (!emoji.shortCodes.length) continue
 
   const offset = points.length
@@ -60,7 +60,7 @@ reverse.sort((a, b) => cmpCodePoints(toPoint(a.point), toPoint(b.point)))
 
 const KEYS = Buffer.from(keys)
 const POINTS = new Uint32Array(points)
-const KEY_TO_POINTS = new Uint16Array(codes.length * 3)
+const KEY_TO_POINTS = new Uint32Array(codes.length * 3)
 const POINTS_TO_KEY = new Uint16Array(reverse.length)
 
 for (let i = 0; i < codes.length; i++) {
@@ -96,7 +96,7 @@ s += `const INDEX = b4a.from("${INDEX.toString("base64")}", "base64")\n\n`
 let n = 0
 
 s += `exports.POINTS = to32(${n}, ${(n += POINTS.byteLength)})\n`
-s += `exports.KEY_TO_POINTS = to16(${n}, ${(n += KEY_TO_POINTS.byteLength)})\n`
+s += `exports.KEY_TO_POINTS = to32(${n}, ${(n += KEY_TO_POINTS.byteLength)})\n`
 s += `exports.POINTS_TO_KEY = to16(${n}, ${(n += POINTS_TO_KEY.byteLength)})\n`
 s += `exports.KEYS = INDEX.subarray(${n}, ${(n += KEYS.byteLength)})\n`
 s += `\n`
@@ -129,9 +129,7 @@ function toPoint(ptr) {
 
 function addShortCodes(data, shortCodes) {
   for (const emoji of data) {
-    emoji.shortCodes = Array.isArray(shortCodes[emoji.hexcode])
-      ? shortCodes[emoji.hexcode]
-      : [shortCodes[emoji.hexcode]]
+    emoji.shortCodes = [].concat(shortCodes[emoji.hexcode] ?? [])
     if (emoji.skins) {
       addShortCodes(emoji.skins, shortCodes)
     }

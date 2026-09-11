@@ -133,5 +133,13 @@ exports.SHORTCODES = [
   ["👎", "-1"],
   ["🏴󠁧󠁢󠁷󠁬󠁳󠁿", "flag_gbwls"],
   ["❤️", "heart"],
+  ["🤘🏻", "metal_tone1"],
   ["not-an-emoji", "not-an-emoji"],
+]
+
+exports.EMOJIFY = [
+  ["Read on \u204D 🤘🏻", "Read on :bullet.: :metal_tone1:"],
+  ["Hello 👋 World 🌍", "Hello :wave: World :earth_africa:"],
+  ["Home 🇱🇹 is where the ❤️ is!", "Home :flag_lt: is where the :heart: is!"],
+  [":invalid: passes through", ":invalid: passes through"],
 ]

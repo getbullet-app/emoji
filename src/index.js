@@ -89,6 +89,20 @@ const toCodePoints = (exports.toCodePoints = function toCodePoints(emoji) {
   return codes
 })
 
+const emojify = (exports.emojify = function emojify(string) {
+  return string.replaceAll(/:([a-z0-9_+\.-]+):/g, (match, sub) => {
+    const emoji = toEmoji(sub)
+    return sub === emoji ? match : emoji
+  })
+})
+
+const codify = (exports.codify = function codify(string) {
+  return string.replaceAll(regex(), (sub) => {
+    const code = toShortCode(sub)
+    return sub === code ? sub : `:${code}:`
+  })
+})
+
 function getCodePoint(offset, length) {
   const codes = new Array(length)
 

@@ -3,11 +3,12 @@ import { StatusBar } from "expo-status-bar"
 import { useCallback, useState } from "react"
 import { ActivityIndicator, Button, ScrollView, StyleSheet, Text, View } from "react-native"
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context"
-import { regex, toEmoji, toShortCode } from "@bullet./emoji"
+import { codify, emojify, regex, toEmoji, toShortCode } from "@bullet./emoji"
 import {
+  COUNT_SEQUENCES,
+  EMOJIFY,
   EMOJI_SEQUENCES,
   EXCLUDE_SEQUENCES,
-  COUNT_SEQUENCES,
   SHORTCODES,
 } from "@bullet./emoji/fixtures"
 import { BulletMoji_400Regular } from "@bullet./emoji/font"
@@ -18,7 +19,8 @@ const TEST_COUNT =
   EMOJI_SEQUENCES.length +
   EXCLUDE_SEQUENCES.length +
   COUNT_SEQUENCES.length +
-  SHORTCODES.length * 2
+  SHORTCODES.length * 2 +
+  EMOJIFY.length * 2
 
 function Preview() {
   const [successes, setSuccesses] = useState(0)
@@ -77,6 +79,28 @@ function Preview() {
       } else {
         failures++
         console.warn(`Failed to emoji: expected "${emoji}" got "${actual}"`)
+      }
+    }
+
+    for (const [output, input] of EMOJIFY) {
+      const actual = emojify(input)
+
+      if (actual === output) {
+        successes++
+      } else {
+        failures++
+        console.warn(`Failed to emojify: expected "${output}" got "${actual}"`)
+      }
+    }
+
+    for (const [input, output] of EMOJIFY) {
+      const actual = codify(input)
+
+      if (actual === output) {
+        successes++
+      } else {
+        failures++
+        console.warn(`Failed to codify: expected "${output}" got "${actual}"`)
       }
     }
 
