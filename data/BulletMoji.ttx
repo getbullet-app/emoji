@@ -5,7 +5,7 @@
       BulletMoji © Tomas Ravinskas; Based on OpenMoji © HfG Schwäbisch Gmünd CC-BY-SA-4.0
     </namerecord>
     <namerecord nameID="1" platformID="3" platEncID="1" langID="0x409">
-      BulletMoji
+      BulletMoji_400Regular
     </namerecord>
     <namerecord nameID="2" platformID="3" platEncID="1" langID="0x409">
       Regular
@@ -29,10 +29,12 @@
       Tomas Ravinskas
     </namerecord>
     <namerecord nameID="9" platformID="3" platEncID="1" langID="0x409">
-      Tomas Ravinskas &amp; Daniel Utz &amp; Benedikt Groß with students of the HfG Schwäbisch Gmünd and other contributors
+      Tomas Ravinskas &amp; Daniel Utz &amp; Benedikt Groß with students of the HfG Schwäbisch Gmünd
+      and other contributors
     </namerecord>
     <namerecord nameID="10" platformID="3" platEncID="1" langID="0x409">
-      Open-source emojis for designers, developers and everyone else! https://getbullet.app/ http://openmoji.org/ https://github.com/hfg-gmuend/openmoji
+      Open-source emojis for designers, developers and everyone else! https://getbullet.app/
+      http://openmoji.org/ https://github.com/hfg-gmuend/openmoji
     </namerecord>
     <namerecord nameID="11" platformID="3" platEncID="1" langID="0x409">
       https://getbullet.app/

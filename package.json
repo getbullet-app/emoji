@@ -11,6 +11,7 @@
   "scripts": {
     "build": "npm run copy:files && npm run generate:regex",
     "copy:files": "node ./scripts/copy-files.js",
+    "example": "npm run --workspace=bulletmoji-example",
     "generate:fixtures": "node ./scripts/generate-fixtures.js",
     "generate:font": "./scripts/generate-font.sh",
     "generate:regex": "node ./scripts/generate-regex.js",
@@ -25,8 +26,22 @@
       "types": "./dist/font.d.ts",
       "default": "./dist/font.js"
     },
+    "./metro": {
+      "types": "./dist/metro.d.ts",
+      "default": "./dist/metro.js"
+    },
+    "./fixtures": {
+      "types": "./test/fixtures/index.d.ts",
+      "default": "./test/fixtures/index.js"
+    },
     "./package.json": "./package.json"
   },
+  "publishConfig": {
+    "access": "public"
+  },
+  "workspaces": [
+    "./example"
+  ],
   "files": [
     "dist",
     "font",

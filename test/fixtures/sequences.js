@@ -94,9 +94,34 @@ const EXTRA_SEQUENCES = [
   "\u{1F004}\uFE0F", // mahjong tile red dragon
 ]
 
-module.exports = [
+module.exports.EMOJI_SEQUENCES = [
   ...BULLET_SEQUENCES,
   ...BASE_SEQUENCES,
   ...UNICODE_SEQUENCES,
   ...EXTRA_SEQUENCES,
+]
+
+module.exports.EXCLUDE_SEQUENCES = [
+  "A",
+  "\u200D",
+  "\u20E3",
+  "\uFE0F",
+  // Within \p{Emoji}
+  "#",
+  "*",
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+]
+
+module.exports.COUNT_SEQUENCES = [
+  ["\u{1F431}\u{1F464}", 2],
+  ["🇧🇷🇯🇵🏳️‍🌈🇺🇸", 4],
 ]

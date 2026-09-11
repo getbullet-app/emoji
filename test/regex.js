@@ -5,42 +5,24 @@
  */
 const test = require("brittle")
 const { regex } = require("@bullet./emoji")
-
-const EMOJI_SEQUENCES = require("./fixtures/sequences")
+const { EMOJI_SEQUENCES, EXCLUDE_SEQUENCES, COUNT_SEQUENCES } = require("./fixtures")
 
 test("regex matches expected codepoints", (t) => {
   for (const sequence of EMOJI_SEQUENCES) {
     t.ok(regex().test(sequence))
-    t.alike(sequence.match(regex())[0], sequence)
+    t.is(sequence.match(regex())[0], sequence)
   }
 })
 
 test("regex does not match non-emoji sequences", (t) => {
-  for (const char of [
-    "A",
-    "\u200D",
-    "\u20E3",
-    "\uFE0F",
-    // Within \p{Emoji}
-    "#",
-    "*",
-    "0",
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-  ]) {
-    t.absent(regex().test(char))
-    t.absent(regex().test(`${char}\u{FE0F}`))
+  for (const sequence of EXCLUDE_SEQUENCES) {
+    t.absent(regex().test(sequence))
+    t.absent(regex().test(`${sequence}\u{FE0F}`))
   }
 })
 
 test("matches adjacent emoji sequences as separate matches", (t) => {
-  t.is("\u{1F431}\u{1F464}".match(regex()).length, 2)
-  t.is("🇧🇷🇯🇵🏳️‍🌈🇺🇸".match(regex()).length, 4)
+  for (const [sequence, count] of COUNT_SEQUENCES) {
+    t.is(sequence.match(regex()).length, count)
+  }
 })
